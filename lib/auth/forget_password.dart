@@ -1,4 +1,4 @@
-import 'package:evently/default_elevated_button.dart';
+import 'package:evently/widgets/default_elevated_button.dart';
 import 'package:flutter/material.dart';
 
 class ForgetPassword extends StatefulWidget {

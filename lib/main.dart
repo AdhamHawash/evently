@@ -1,8 +1,9 @@
 import 'package:evently/app_theme.dart';
-import 'package:evently/forget_password.dart';
+import 'package:evently/auth/forget_password.dart';
 import 'package:evently/home_screen.dart';
-import 'package:evently/login_screen.dart';
-import 'package:evently/regester_screen.dart';
+import 'package:evently/auth/login_screen.dart';
+import 'package:evently/on_Bording_screen.dart';
+import 'package:evently/auth/regester_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,12 +16,13 @@ class evntleApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        HomeScreen.routeName: (_) => HomeScreen(),
+        OnBordingScreen.routeName: (_) => OnBordingScreen(),
         LoginScreen.routeName: (_) => LoginScreen(),
-        RegesterScreen.routeName : (_) => RegesterScreen(),
-        ForgetPassword.routName : (_) => ForgetPassword(),
+        HomeScreen.routeName: (_) => HomeScreen(),
+        RegesterScreen.routeName: (_) => RegesterScreen(),
+        ForgetPassword.routName: (_) => ForgetPassword(),
       },
-      initialRoute: LoginScreen.routeName,
+      initialRoute: OnBordingScreen.routeName,
 
       theme: AppTheme.lighTheme,
       darkTheme: AppTheme.darkTheme,

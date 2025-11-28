@@ -1,17 +1,17 @@
-import 'package:evently/default_elevated_button.dart';
-import 'package:evently/default_text_from_field.dart';
-import 'package:evently/login_screen.dart';
+import 'package:evently/widgets/default_elevated_button.dart';
+import 'package:evently/widgets/default_text_from_field.dart';
+import 'package:evently/auth/forget_password.dart';
+import 'package:evently/auth/regester_screen.dart';
 import 'package:flutter/material.dart';
 
-class RegesterScreen extends StatefulWidget {
-  static const String routeName = '/regester';
+class LoginScreen extends StatefulWidget {
+  static const String routeName = '/login';
 
   @override
-  State<RegesterScreen> createState() => _RegesterScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _RegesterScreenState extends State<RegesterScreen> {
-  TextEditingController nameController = TextEditingController();
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
@@ -29,12 +29,6 @@ class _RegesterScreenState extends State<RegesterScreen> {
             ),
             SizedBox(height: 24),
             DefaultTextFormField(
-              hintText: 'Name',
-              controller: nameController,
-              prefixIconImageName: 'name',
-            ),
-            SizedBox(height: 16),
-            DefaultTextFormField(
               hintText: 'Email',
               controller: emailController,
               prefixIconImageName: 'email',
@@ -45,22 +39,33 @@ class _RegesterScreenState extends State<RegesterScreen> {
               controller: passwordController,
               prefixIconImageName: 'password',
             ),
+            SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed:
+                      () => Navigator.of(context).pushReplacementNamed(ForgetPassword.routName),
+                  child: Text('Forget Password?'),
+                ),
+              ],
+            ),
             SizedBox(height: 24),
-            DefaultElevatedButton(label: 'Create Account', onPressed: regester),
+            DefaultElevatedButton(label: 'Login', onPressed: login),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'Already Have Account ?',
+                  'Don’t Have Account ?',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 TextButton(
                   onPressed:
                       () => Navigator.of(
                         context,
-                      ).pushReplacementNamed(LoginScreen.routeName),
-                  child: Text('Login'),
+                      ).pushReplacementNamed(RegesterScreen.routeName),
+                  child: Text('Create Account'),
                 ),
               ],
             ),
@@ -70,5 +75,5 @@ class _RegesterScreenState extends State<RegesterScreen> {
     );
   }
 
-  void regester() {}
+  void login() {}
 }
