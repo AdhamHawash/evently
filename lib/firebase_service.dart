@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently/models/event_model.dart';
 import 'package:evently/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+  
 class FirebaseService {
   static CollectionReference<EventModel> getEventsCollection() =>
       FirebaseFirestore.instance
