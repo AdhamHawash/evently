@@ -22,7 +22,7 @@ class evntleApp extends StatelessWidget {
         RegesterScreen.routeName: (_) => RegesterScreen(),
         ForgetPassword.routName: (_) => ForgetPassword(),
       },
-      initialRoute: OnBordingScreen.routeName,
+      initialRoute: HomeScreen.routeName,
 
       theme: AppTheme.lighTheme,
       darkTheme: AppTheme.darkTheme,

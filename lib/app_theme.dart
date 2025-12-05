@@ -73,6 +73,11 @@ class AppTheme {
         fontWeight: FontWeight.w500,
         color: black,
       ),
+      titleSmall: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: white,
+      )
     ),
   );
 
