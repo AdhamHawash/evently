@@ -1,6 +1,6 @@
-import 'package:evently/Strings.dart';
-import 'package:evently/assets.dart';
-import 'package:evently/descrptions.dart';
+import 'package:evently/onbording/Strings.dart';
+import 'package:evently/onbording/assets.dart';
+import 'package:evently/onbording/descrptions.dart';
 import 'package:flutter/cupertino.dart';
 
 class OnbordingData {

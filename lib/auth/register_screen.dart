@@ -1,4 +1,4 @@
-import 'package:evently/auth/register_screen.dart';
+import 'package:evently/auth/login_screen.dart';
 import 'package:evently/firebase_service.dart';
 import 'package:evently/home_screen.dart';
 import 'package:evently/l10n/app_localizations.dart';
@@ -11,14 +11,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const String routeName = '/login';
+class RegisterScreen extends StatefulWidget {
+  static const String routeName = '/register';
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -40,6 +41,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 fit: BoxFit.fill,
               ),
               SizedBox(height: 24),
+              DefaultTextFormField(
+                hintText: 'Name',
+                controller: nameController,
+                prefixIconImageName: 'name',
+                validator: (value) {
+                  if (value == null || value.length < 3) {
+                    return 'Invalid name';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16),
               DefaultTextFormField(
                 hintText: 'Email',
                 controller: emailController,
@@ -66,22 +79,22 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 24),
               DefaultElevatedButton(
-                label: AppLocalizations.of(context)!.login,
-                onPressed: login,
+                label: AppLocalizations.of(context)!.createAccount,
+                onPressed: register,
               ),
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Don’t Have Account?',
+                    'Already Have Account?',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   TextButton(
                     onPressed: () => Navigator.of(
                       context,
-                    ).pushReplacementNamed(RegisterScreen.routeName),
-                    child: Text(AppLocalizations.of(context)!.createAccount),
+                    ).pushReplacementNamed(LoginScreen.routeName),
+                    child: Text(AppLocalizations.of(context)!.login),
                   ),
                 ],
               ),
@@ -92,9 +105,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void login() {
+  void register() {
     if (formKey.currentState!.validate()) {
-      FirebaseService.login(
+      FirebaseService.register(
+            name: nameController.text,
             email: emailController.text,
             password: passwordController.text,
           )

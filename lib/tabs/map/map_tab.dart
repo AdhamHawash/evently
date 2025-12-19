@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Map extends StatelessWidget {
-  const Map({super.key});
-
+class MapTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Center(child: Text('Map'));
   }
 }

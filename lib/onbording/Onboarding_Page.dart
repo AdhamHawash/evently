@@ -1,5 +1,5 @@
 import 'package:evently/app_theme.dart';
-import 'package:evently/onBording_data.dart';
+import 'package:evently/onbording/onBording_data.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingPage extends StatelessWidget {
